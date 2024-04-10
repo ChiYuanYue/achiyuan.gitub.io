@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在跳转中</title>
+</head>
+
+<body>
+    <style>
+        .all {
+            width: 98%;
+            height: 500px;
+            background-color: #ffffff;
+            padding-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .all-add {
+            display: flex;
+            border: 1px solid rgb(255, 255, 255);
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+
+        .add-input {
+            border: 1px solid #dfe1e5;
+            outline: none;
+            width: 60%;
+            height: 50px;
+            border-radius: 20px 0 0 20px;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .add-button {
+            background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 0, 255));
+            border-radius: 0 20px 20px 0;
+            width: 100px;
+            height: 52px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            line-height: 52px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .task-list {
+            display: flex;
+            box-sizing: border-box;
+            width: 80%;
+            height: 50px;
+            margin: 8px auto;
+            padding: 16px;
+            border-radius: 20px;
+            box-shadow: rgb(149, 157, 165, 0.2)0px 8px 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .task-del {
+            color: rgb(255, 0, 0);
+            border: none;
+            background-color: transparent;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.4;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+
+
+        th {
+            padding: 5px 30px;
+        }
+
+        table,
+        th,
+        tr,
+        td {
+            border: 1px solid black;
+        }
+
+        table {
+            /* 合并相邻边框 */
+            border-collapse: collapse;
+            height: 80px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        body {
+            background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 0, 255));
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-left: 1%;
+            padding-left: 15px;
+        }
+    </style>
+    <div class="all">
+        <div class="title">小胜的垃圾站</div>
+        <div class="all-add">
+            <input type="text" id="taskInput" class="add-input" placeholder="Add a new task">
+            <div><button class="add-button" onclick="addTask()" value="000">Add Todo</button></div>
+        </div>
+        <div id="taskList">
+            <!-- <div class="task-list completed">
+                <div id="task"><input type="checkbox"><span>${taskInput.value}</span></div>
+                <button class="task-del" onclick="removeTask(this)">
+                    <h3>del</h3>
+                </button>
+            </div>
+            <div class="task-list ">
+                <div><input type="checkbox" onclick="com(this)"><span>${taskInput.value}</span></div>
+                <button class="task-del" onclick="removeTask(this)">
+                    <h3>del</h3>
+                </button>
+            </div> -->
+        </div>
+    </div>
+    <div>
+        <h2>表单标题</h2>
+        <table>
+            <tr>
+                <th>标题1</th>
+                <th>标题2</th>
+                <th>标题3</th>
+                <th>标题4</th>
+                <th>标题5</th>
+            </tr>
+            <tr>
+                <td>表格1</td>
+                <td>表格2</td>
+                <td>表格3</td>
+                <td>表格4</td>
+                <td>表格5</td>
+            </tr>
+        </table>
+    </div>
+    <!--<div class="a" align="center"><img src="/images/0.jpg" width="200px" height="200px"></div>-->
+    <!--内部 JS-->
+    <script>
+        //输入语句
+        function addTask() {
+            let taskInput = document.getElementById('taskInput')
+            let taskList = document.getElementById('taskList')
+            if (taskInput.value !== '') {
+                let newTask = document.createElement("div")
+                newTask.classList.add("task-list")
+                newTask.innerHTML = `<div><input type="checkbox" onclick="com(this)"><span>${taskInput.value}</span></div><button class="task-del" onclick="removeTask(this)"><h3>del</h3></button>`
+                let targetDiv = document.getElementById("taskList")
+                targetDiv.appendChild(newTask)
+                taskInput.value = ""
+            }
+        }
+
