@@ -88,7 +88,7 @@
 
 
         th {
-            padding: 5px 30px;
+            padding: 10px 40px;
         }
 
         table,
@@ -121,24 +121,26 @@
             <div><button class="add-button" onclick="addTask()" value="000">Add Todo</button></div>
         </div>
         <div id="taskList">
-             <div class="task-list completed">
-                <div id="task"><input type="checkbox"><span>吃饭</span></div>
+            <!-- <div class="task-list completed">
+                <div id="task"><input type="checkbox"><span>${taskInput.value}</span></div>
                 <button class="task-del" onclick="removeTask(this)">
                     <h3>del</h3>
                 </button>
             </div>
             <div class="task-list ">
-                <div><input type="checkbox" onclick="com(this)"><span>睡觉</span></div>
+                <div><input type="checkbox" onclick="com(this)"><span>${taskInput.value}</span></div>
                 <button class="task-del" onclick="removeTask(this)">
                     <h3>del</h3>
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
     <div>
-        <h2>表单标题</h2>
+        <h2>课程表</h2>
         <table>
             <tr>
+                <th>节次</th>
+                <th>时间</th>
                 <th>星期一</th>
                 <th>星期二</th>
                 <th>星期三</th>
@@ -146,11 +148,46 @@
                 <th>星期五</th>
             </tr>
             <tr>
-                <td>没课</td>
-                <td>没课</td>
-                <td>没课</td>
-                <td>没课</td>
-                <td>没课</td>
+                <td>第一节</td>
+                <td>8:30-10:00</td>
+                <td></td>
+                <td>电子技术E426</td>
+                <td></td>
+                <td>中国近代史H108</td>
+                <td>电子技术H102</td>
+            </tr>
+            <tr>
+                <td>第二节</td>
+                <td>10:20-11:50</td>
+                <td></td>
+                <td></td>
+                <td>心里健康F222</td>
+                <td>高等数学F416</td>
+                <td>程序设计E319</td>
+            </tr>
+            <tr>
+                <td>第三节</td>
+                <td>14:00-14:40</td>
+                <td></td>
+                <td>大学英语H116</td>
+                <td>大学体育4</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>第四节</td>
+                <td>15:50-17:20</td>
+                <td>高等数学F216</td>
+                <td></td>
+                <td>程序设计E509</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>第五节</td>
+                <td>18:30-20:00</td>
+                <td>大学英语H114</td>
+                <td></td>
+                <td>物联网导论F416</td>
+                <td></td>
             </tr>
         </table>
     </div>
@@ -171,3 +208,23 @@
             }
         }
 
+        function removeTask(button) {
+            let ad = button.parentNode
+            ad.classList.add("hidden")
+        }
+        let isChecked = true
+        function com(input) {
+            let ad = input.parentNode
+            if (isChecked) {
+                ad.classList.add("completed")
+                isChecked = !isChecked
+            }
+            else {
+                ad.classList.remove("completed")
+                isChecked = !isChecked
+            }
+        }
+    </script>
+</body>
+
+</html>
